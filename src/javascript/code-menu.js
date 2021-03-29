@@ -22,21 +22,25 @@ refs.checkBox.addEventListener('change', choiceTheme);
 refs.checkBox.addEventListener('change', newChoiceTheme);
 
 function choiceTheme(event) {
-  const checked = refs.checkBox.checked;
+  const check = refs.checkBox.checked;
 
-  if (checked) {
+  if (check) {
     refs.checkBoxClick.classList.add(Theme.DARK);
     refs.checkBoxClick.classList.remove(Theme.LIGHT);
-  } else {
-    refs.checkBoxClick.classList.add(Theme.LIGHT);
-    refs.checkBoxClick.classList.remove(Theme.DARK);
-  }
+  } else removeChoiceTheme();
 }
 
-function newChoiceTheme(event) {
-  const checked = refs.checkBox.checked;
+function removeChoiceTheme(event) {
+    {
+      refs.checkBoxClick.classList.add(Theme.LIGHT);
+      refs.checkBoxClick.classList.remove(Theme.DARK);
+    }
+  }
 
-  if (checked) {
+function newChoiceTheme(event) {
+  const check = refs.checkBox.checked;
+
+  if (check) {
     localStorage.setItem('theme', Theme.DARK);
   } else {
     localStorage.removeItem('theme');
